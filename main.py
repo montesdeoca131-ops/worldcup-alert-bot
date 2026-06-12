@@ -16,4 +16,12 @@ requests.post(
     }
 )
 
-print("Message sent")
+response = requests.post(
+    url,
+    json={
+        "chat_id": CHANNEL_ID,
+        "text": message
+    }
+)
+
+print(response.text)
