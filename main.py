@@ -4,7 +4,12 @@ import requests
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHANNEL_ID = os.getenv("TELEGRAM_CHANNEL_ID")
 
-message = "🚀 N'S SPORTS BOT ONLINE"
+message = "message = """⚽ WORLD CUP ALERT
+
+🇰🇷 South Korea vs 🇨🇿 Czechia
+
+Kickoff in 15 minutes.
+""""
 
 url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 
