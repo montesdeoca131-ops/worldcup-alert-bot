@@ -8,8 +8,12 @@ headers = {
 }
 
 response = requests.get(
-    "https://v3.football.api-sports.io/fixtures?live=all",
-    headers=headers
+    "https://v3.football.api-sports.io/fixtures",
+    headers=headers,
+    params={
+        "league": 1,
+        "season": 2026
+    }
 )
 
 print(response.text)
