@@ -3,21 +3,27 @@ import requests
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHANNEL_ID = os.getenv("TELEGRAM_CHANNEL_ID")
+API_KEY = os.getenv("API_FOOTBALL_KEY")
 
-message = "⚽ WORLD CUP ALERT - South Korea vs Czechia - Kickoff in 15 minutes."
+url = "https://v3.football.api-sports.io/fixtures"
 
-url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+headers = {
+    "x-apisports-key": API_KEY
+}
 
-requests.post(
-    url,
-    json={
-        "chat_id": CHANNEL_ID,
-        "text": message
-    }
-)
+params = {
+    "league": 1,
+    "season": 2026
+}
+
+r = requests.get(url, headers=headers, params=params)
+
+message = f"⚽ FIFA World Cup Check\n\nStatus: {r.status_code}"
+
+telegram_url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 
 response = requests.post(
-    url,
+    telegram_url,
     json={
         "chat_id": CHANNEL_ID,
         "text": message
