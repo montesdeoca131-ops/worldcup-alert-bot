@@ -8,14 +8,8 @@ headers = {
 }
 
 response = requests.get(
-    "https://v3.football.api-sports.io/leagues?search=World Cup",
+    "https://v3.football.api-sports.io/fixtures?live=all",
     headers=headers
 )
 
-data = response.json()
-
-for league in data["response"]:
-    print(
-        league["league"]["id"],
-        league["league"]["name"]
-    )
+print(response.text)
