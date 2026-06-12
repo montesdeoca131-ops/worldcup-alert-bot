@@ -12,4 +12,10 @@ response = requests.get(
     headers=headers
 )
 
-print(response.text)
+data = response.json()
+
+for league in data["response"]:
+    print(
+        league["league"]["id"],
+        league["league"]["name"]
+    )
